@@ -16,10 +16,11 @@ class CustomerController extends Controller
 
     public function store(Request $request){
 
-        echo "<pre>";
-        print_r($request->all());
+        // echo "<pre>";
+        // print_r($request->all());
 
-
+        // p($request->all());
+        // die;
         //insert query in database
         $customer = new Customers();
 
