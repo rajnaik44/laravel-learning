@@ -57,19 +57,19 @@
               </tr>
             </thead>
             <tbody>
-                @foreach ($customer as $data)
+                @foreach ($customer as $customer)
                 
                 <tr>
-                <td>{{$data->customer_id}}</td>
-                <td>{{$data->name}}</td>
-                <td>{{$data->email}}</td>
-                <td>{{$data->country}}</td>
-                <td>{{$data->state}}</td>
-                <td>{{$data->address}}</td>
-                <td>{{$data->gender}}</td>
-                <td>{{$data->dob}}</td>
+                <td>{{$customer->customer_id}}</td>
+                <td>{{$customer->name}}</td>
+                <td>{{$customer->email}}</td>
+                <td>{{$customer->country}}</td>
+                <td>{{$customer->state}}</td>
+                <td>{{$customer->address}}</td>
+                <td>{{$customer->gender}}</td>
+                <td>{{$customer->dob}}</td>
                 <td>
-                    @if ($data->status == '1')
+                    @if ($customer->status == '1')
                     <a href="">
                         <span class="badge text-bg-success">Active</span>   
                       </a>
@@ -80,7 +80,12 @@
                         @endif
                 </td>
                 <td>
+                  <a href="{{route('customer.delete', ['id'=> $customer->customer_id])}}">
                   <button class="btn btn-danger">Delete</button>
+                </a>
+                  <a href="{{route('customer.edit', ['id'=> $customer->customer_id])}}">
+                  <button class="btn btn-primary">Edit</button>
+                </a>
                 </td>
             </tr>
                 @endforeach

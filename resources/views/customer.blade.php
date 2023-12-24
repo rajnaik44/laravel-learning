@@ -32,24 +32,27 @@
   </nav>
 
 <div class="container mt-4">
-  <form action="{{url('/')}}/customer" method="Post">
-    @csrf
-          {{-- <pre>
-            @php
-            print_r($errors->all());
-                
-            @endphp
-          </pre> --}}
-    <!-- Name -->
+  {{-- <form action="{{url('/')}}/customer" method="Post"> --}}
+    <form action="{{$url}}" method="Post">
+      @csrf
+      {{-- <pre>
+        @php
+        print_r($errors->all());
+        
+        @endphp
+      </pre> --}}
+
+      <div class="container text-center">{{$title}}</div>
+      <!-- Name -->
     <div class="form-group ">
       <label for="name">Name:</label>
-      <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name" value="{{old('name')}}">     
+      <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name" >     
     </div>
 
     <!-- Email -->
     <div class="form-group mt-4">
       <label for="email">Email:</label>
-      <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" value="{{old('email')}}">
+      <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email">
     </div>
 
     <!-- Password -->
@@ -61,13 +64,13 @@
     <!-- Country -->
     <div class="form-group mt-4">
       <label for="country">Country:</label>
-      <input type="text" name="country" class="form-control" id="country" placeholder="Enter your country" value="{{old('country')}}">
+      <input type="text" name="country" class="form-control" id="country" placeholder="Enter your country" >
     </div>
 
     <!-- State -->
     <div class="form-group mt-4">
       <label for="state">State:</label>
-      <input type="text" name="state" class="form-control" id="state" placeholder="Enter your state" value="{{old('state')}}">
+      <input type="text" name="state" class="form-control" id="state" placeholder="Enter your state">
     </div>
 
     <!-- Address -->
