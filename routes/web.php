@@ -37,10 +37,13 @@ Route::get("/customers", function(){
 Route::get("/customer/create", [CustomerController::class,"create"])->name("customer.create");
 Route::get("/customer/view", [CustomerController::class,"view"]);
 Route::get("/customer/delete/{id}", [CustomerController::class,"delete"])->name("customer.delete");
+Route::get("/customer/force-delete/{id}", [CustomerController::class,"forceDelete"])->name("customer.force-delete");
+Route::get("/customer/restore/{id}", [CustomerController::class,"restore"])->name("customer.restore");
 Route::get("/customer/edit/{id}", [CustomerController::class,"edit"])->name("customer.edit");
 Route::post("/customer/update/{id}", [CustomerController::class,"update"])->name("customer.update");
 Route::Post("/customer", [CustomerController::class,"store"]);
 
+Route::get("/customer/trash", [CustomerController::class,"trash"])->name('customer.trash');
 
 route::get("get-all-session", function(){
     $session = session()->all();
@@ -59,7 +62,7 @@ route::get('destroy-session', function(){
     session()->forget('name');
     session()->forget('user_id');
     return redirect('get-all-session');
-
-
 });
+
+
 

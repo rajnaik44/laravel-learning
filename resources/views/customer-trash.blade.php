@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Customer Form View</title>
+    <title>Customer Trash</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
   </head>
   <body>
@@ -40,8 +40,8 @@
       <a href="{{route('customer.create')}}">
       <button class="btn btn-primary d-inline-block m-2 float-right">ADD</button>
     </a>
-      <a href="{{route('customer.trash')}}">
-      <button class="btn btn-danger d-inline-block m-2 float-right">Go To Trash</button>
+      <a href="{{url('customer/view')}}">
+      <button class="btn btn-primary d-inline-block m-2 float-right">Customer View</button>
     </a>
 
 
@@ -91,11 +91,11 @@
                         @endif
                 </td>
                 <td>
-                  <a href="{{route('customer.delete', ['id'=> $customer->customer_id])}}">
-                  <button class="btn btn-danger">Move To Trash</button>
+                  <a href="{{route('customer.force-delete', ['id'=> $customer->customer_id])}}">
+                  <button class="btn btn-danger">Delete</button>
                 </a>
-                  <a href="{{route('customer.edit', ['id'=> $customer->customer_id])}}">
-                  <button class="btn btn-primary">Edit</button>
+                  <a href="{{route('customer.restore', ['id'=> $customer->customer_id])}}">
+                  <button class="btn btn-primary">Restore</button>
                 </a>
                 </td>
             </tr>
