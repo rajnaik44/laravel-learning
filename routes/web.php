@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Models\Customers;
 use App\Http\Controllers\CustomerController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,3 +40,26 @@ Route::get("/customer/delete/{id}", [CustomerController::class,"delete"])->name(
 Route::get("/customer/edit/{id}", [CustomerController::class,"edit"])->name("customer.edit");
 Route::post("/customer/update/{id}", [CustomerController::class,"update"])->name("customer.update");
 Route::Post("/customer", [CustomerController::class,"store"]);
+
+
+route::get("get-all-session", function(){
+    $session = session()->all();
+    p($session);
+
+});
+
+route::get('set-session', function(Request $request){
+    $request->session()->put('name', 'Wscube Tech');                    
+    $request->session()->put('user_id', '123');    
+    // $request->session()->flash('status', 'success');   
+    return redirect('get-all-session');             
+});
+
+route::get('destroy-session', function(){
+    session()->forget('name');
+    session()->forget('user_id');
+    return redirect('get-all-session');
+
+
+});
+
