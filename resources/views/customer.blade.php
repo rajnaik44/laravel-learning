@@ -42,7 +42,9 @@
         @endphp
       </pre> --}}
 
-      <div class="container text-center">{{$title}}</div>
+     <div class="container text-center">
+    <h1 class="display-4 font-weight-bold text-primary">{{$title}}</h1>
+</div>
       <!-- Name -->
     <div class="form-group ">
       <label for="name">Name:</label>
@@ -52,7 +54,7 @@
     <!-- Email -->
     <div class="form-group mt-4">
       <label for="email">Email:</label>
-      <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email">
+      <input type="email" name="email" class="form-control" id="email" placeholder="Enter your email" >
     </div>
 
     <!-- Password -->
@@ -70,13 +72,13 @@
     <!-- State -->
     <div class="form-group mt-4">
       <label for="state">State:</label>
-      <input type="text" name="state" class="form-control" id="state" placeholder="Enter your state">
+      <input type="text" name="state" class="form-control" id="state" placeholder="Enter your state" >
     </div>
 
     <!-- Address -->
     <div class="form-group mt-4">
       <label for="address">Address:</label>
-      <textarea class="form-control" name="address" id="address" rows="3" placeholder="Enter your address"></textarea>
+      <textarea class="form-control" name="address" id="address" rows="3" placeholder="Enter your address" ></textarea>
     </div>
 
     <!-- Gender -->
