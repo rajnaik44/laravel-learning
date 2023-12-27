@@ -37,13 +37,26 @@
         </div>
       </div>
     </nav>
-    <div class="container">
+
+    <div class="container mt-2 ">
+      <div class="container-fluid pb-2">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" name="search" placeholder="Search by name/email" aria-label="Search" value="{{$search}}">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+          <a href="{{url('/customer/view')}}">
+          <button class="btn btn-outline-success" type="button"> Reset  </button>
+          </a>
+       
+        </form>
+      </div>
       <a href="{{route('customer.create')}}">
       <button class="btn btn-primary d-inline-block m-2 float-right">ADD</button>
     </a>
       <a href="{{route('customer.trash')}}">
       <button class="btn btn-danger d-inline-block m-2 float-right">Go To Trash</button>
+      
     </a>
+    
 
 
 
@@ -94,13 +107,12 @@
                 </td>
                 <td>
                   <a href="{{route('customer.delete', ['id'=> $customer->customer_id])}}">
-                    <button class="btn btn-danger btn-sm text-sm">Move To Trash</button>
-
+                    <button class="btn btn-danger">Trash</button>
                 </a>
                 </td>
                 <td>
                   <a href="{{route('customer.edit', ['id'=> $customer->customer_id])}}">
-                  <button class="btn btn-primary mt-2">Edit</button>
+                  <button class="btn btn-primary">Edit</button>
                 </a>
                 </td>
             </tr>
