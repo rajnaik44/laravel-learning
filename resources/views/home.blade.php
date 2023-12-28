@@ -24,14 +24,19 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{url('/customer/view')}}">Customer</a>
+
               </li>
+              <a class="nav-link active" aria-current="page" href="{{url('/')}}">English</a>
+              <a class="nav-link active" aria-current="page" href="{{url('/hi')}}">Hindi</a>
+              <a class="nav-link active" aria-current="page" href="{{url('/rus')}}">Russian</a>
             </form>
           </div>
         </div>
       </nav>
 
-      <div class="container">
-        HOme
+      <div class="position-absolute top-50 start-50 translate-middle">
+        <h1>@lang('lang.welcome')</h1>
+        
       </div>
 
 
