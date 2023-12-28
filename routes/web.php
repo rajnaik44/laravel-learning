@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegistrationController;
 use App\Models\Customers;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,7 @@ use Illuminate\Support\Facades\App;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/data', [IndexController::class,'index']);
 
 Route::get('/{lang?}', function ($lang = null) {
     App::setLocale($lang);
@@ -60,8 +63,10 @@ route::get('set-session', function (Request $request) {
     return redirect('get-all-session');
 });
 
+
 route::get('destroy-session', function () {
     session()->forget('name');
     session()->forget('user_id');
     return redirect('get-all-session');
 });
+
