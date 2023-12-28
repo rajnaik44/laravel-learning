@@ -25,25 +25,32 @@ Route::get("/register", [RegistrationController::class,"index"]);
 Route::Post("/register", [RegistrationController::class,"register"]);
 
 
-Route::get("/customers", function(){
-    $customers = Customers::all();
 
-    // echo "<pre>";
-    print_r($customers->toArray ());
+
+//route grouping customer
+
+Route::group(['prefix'=>'/customer'],function() {
+    // Route::get("/customer", function(){
+    Route::get("", function(){
+        $customers = Customers::all();  
+        // echo "<pre>";
+        print_r($customers->toArray ());
+    
+    });
+       
+    Route::get("/create", [CustomerController::class,"create"])->name("customer.create");
+    Route::get("/view", [CustomerController::class,"view"]);
+    Route::get("/delete/{id}", [CustomerController::class,"delete"])->name("customer.delete");
+    Route::get("/force-delete/{id}", [CustomerController::class,"forceDelete"])->name("customer.force-delete");
+    Route::get("/restore/{id}", [CustomerController::class,"restore"])->name("customer.restore");
+    Route::get("/edit/{id}", [CustomerController::class,"edit"])->name("customer.edit");
+    Route::post("/update/{id}", [CustomerController::class,"update"])->name("customer.update");
+    Route::Post("", [CustomerController::class,"store"]);
+    
+    Route::get("/customer/trash", [CustomerController::class,"trash"])->name('customer.trash');
 
 });
 
-
-Route::get("/customer/create", [CustomerController::class,"create"])->name("customer.create");
-Route::get("/customer/view", [CustomerController::class,"view"]);
-Route::get("/customer/delete/{id}", [CustomerController::class,"delete"])->name("customer.delete");
-Route::get("/customer/force-delete/{id}", [CustomerController::class,"forceDelete"])->name("customer.force-delete");
-Route::get("/customer/restore/{id}", [CustomerController::class,"restore"])->name("customer.restore");
-Route::get("/customer/edit/{id}", [CustomerController::class,"edit"])->name("customer.edit");
-Route::post("/customer/update/{id}", [CustomerController::class,"update"])->name("customer.update");
-Route::Post("/customer", [CustomerController::class,"store"]);
-
-Route::get("/customer/trash", [CustomerController::class,"trash"])->name('customer.trash');
 
 route::get("get-all-session", function(){
     $session = session()->all();
