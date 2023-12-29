@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class WebGuard
+class RouteMiddleWear
 {
     /**
      * Handle an incoming request.
@@ -16,12 +16,11 @@ class WebGuard
      */
     public function handle(Request $request, Closure $next)
     {
-
-        //below 18 age cant access the site 
-        // if ($request->age <18) {
-        //     echo "you are not allowed to acces the page";
-        //     die;
-        // }
+        if(session()->has("user_id")){
         return $next($request);
+        }
+        else{
+            return redirect('no-access');
+        }
     }
 }

@@ -19,11 +19,29 @@ use Illuminate\Support\Facades\App;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/data', [IndexController::class,'index']);
-Route::get('/group', [IndexController::class,'group']);
+
+//protected Routes
+Route::get('/data', [IndexController::class,'index'])->middleware('guard');
+Route::get('/group', [IndexController::class,'group'])->middleware('guard');
 
 Route::get('/profile', function(){
     return 'welcome to the profile';
+});
+
+Route::get('/no-access', function(){
+    echo "you cant access the page";
+    die;
+});
+
+//example- putting a data in sessions
+Route::get("/login", function(){
+    session()->put("user_id" , 1);
+    return redirect("/");
+});
+//delteting dta in session
+Route::get("/logout", function(){
+    session()->forget("user_id");
+    return redirect("/");
 });
 
 Route::get('/{lang?}', function ($lang = null) {
