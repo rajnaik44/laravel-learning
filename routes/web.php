@@ -21,8 +21,14 @@ use Illuminate\Support\Facades\App;
 */
 
 //protected Routes
-Route::get('/data', [IndexController::class,'index'])->middleware('guard');
-Route::get('/group', [IndexController::class,'group'])->middleware('guard');
+// Route::get('/data', [IndexController::class,'index'])->middleware('guard');
+// Route::get('/group', [IndexController::class,'group'])->middleware('guard');
+
+//group middleware 
+Route::middleware(['guard'])->group(function() {
+    Route::get('/data', [IndexController::class,'index']);
+    Route::get('/group', [IndexController::class,'group']);
+});   
 
 Route::get('/profile', function(){
     return 'welcome to the profile';

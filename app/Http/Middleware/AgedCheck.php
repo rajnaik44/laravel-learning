@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class RouteMiddleWear
+class AgedCheck
 {
     /**
      * Handle an incoming request.
@@ -16,11 +16,12 @@ class RouteMiddleWear
      */
     public function handle(Request $request, Closure $next)
     {
-        // if(session()->has("user_id")){
-        // return $next($request);
-        // }
-        // else{
-            return redirect('no-access');
-        // }
+        if($request->age >= 18){
+        return $next($request);
+        }
+        else{
+            return redirect("/no-access");
+        }
+
     }
 }
