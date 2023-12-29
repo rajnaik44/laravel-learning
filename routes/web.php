@@ -20,6 +20,7 @@ use Illuminate\Support\Facades\App;
 |
 */
 Route::get('/data', [IndexController::class,'index']);
+Route::get('/group', [IndexController::class,'group']);
 
 Route::get('/{lang?}', function ($lang = null) {
     App::setLocale($lang);
